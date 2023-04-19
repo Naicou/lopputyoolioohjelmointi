@@ -45,7 +45,7 @@ class Asiakas:
         return [random.randint(0, 9) for _ in range(3)]
 
     def luo_asiakasrivi(self, asiakas):
-        return f"{asiakas.nimi} ({asiakas.ika}-vuotias)\n{asiakas.get_nimi()} ({asiakas.get_asiakasnumero()}) on {asiakas.get_ika()}-vuotias."
+        return f"{asiakas.get_nimi()} ({asiakas.get_asiakasnumero()}) on {asiakas.get_ika()}-vuotias."
 
 
 class Palvelu:
