@@ -15,7 +15,7 @@ class Asiakas:
 
     def set_nimi(self, nimi):
         if not nimi:
-            raise ValueError("Nimi ei voi olla tyhjä")
+            raise ValueError("Uusi nimi on annettava.")
         self._nimi = nimi
 
     def get_ika(self):
@@ -23,7 +23,7 @@ class Asiakas:
 
     def set_ika(self, ika):
         if not ika:
-            raise ValueError("Ikä ei voi olla tyhjä")
+            raise ValueError("Ikä on annettava.")
         self._ika = ika
 
     def get_asiakasnumero(self):
@@ -31,7 +31,7 @@ class Asiakas:
 
     def set_asiakasnumero(self, asiakasnumero):
         if not asiakasnumero:
-            raise ValueError("Asiakasnumero ei voi olla tyhjä")
+            raise ValueError("Asiakasnumero on annettava.")
         self._asiakasnumero = asiakasnumero
 
     def luo_nro(self):
@@ -50,7 +50,7 @@ class Palvelu:
 
     def lisaa_asiakas(self, asiakas):
         if not asiakas:
-            raise ValueError("Asiakas ei voi olla tyhjä")
+            raise ValueError("Asiakas on annettava.")
         self._asiakkaat.append(asiakas)
 
     def poista_asiakas(self, asiakas):
@@ -72,7 +72,7 @@ class ParempiPalvelu(Palvelu):
 
     def lisaa_etu(self, etu):
         if not etu:
-            raise ValueError("Etu ei voi olla tyhjä")
+            raise ValueError("Etu on annettava.")
         self._edut.append(etu)
 
     def poista_etu(self, etu):
