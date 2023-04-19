@@ -45,7 +45,8 @@ class Asiakas:
         return [random.randint(0, 9) for _ in range(3)]
 
     def luo_asiakasrivi(self, asiakas):
-        return f"{asiakas.nimi} ({asiakas.ika} v) #{asiakas.asiakasnumero}"
+        return f"{asiakas.nimi} ({asiakas.ika}-vuotias)\n{asiakas.get_nimi()} ({asiakas.get_asiakasnumero()}) on {asiakas.get_ika()}-vuotias."
+
 
 class Palvelu:
     def __init__(self, tuotenimi):
@@ -64,8 +65,10 @@ class Palvelu:
             pass
 
     def tulosta_asiakkaat(self):
+        print(f"Tuotteen {self.tuotenimi} asiakkaat ovat:")
         for asiakas in self.asiakkaat:
-            print(asiakas.nimi)
+            print(asiakas.luo_asiakasrivi(asiakas))
+
 
 class ParempiPalvelu(Palvelu):
     def __init__(self, tuotenimi):
@@ -84,5 +87,6 @@ class ParempiPalvelu(Palvelu):
             pass
 
     def tulosta_edut(self):
+        print(f"Tuotteen {self.tuotenimi} edut ovat:")
         for etu in self.edut:
-            print(etu)
+         print(etu)
