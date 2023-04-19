@@ -9,20 +9,19 @@ c = palvelut.Asiakas('Louheatar', random.randint(40, 60))
 
 # Palvelu
 p = palvelut.Palvelu('Sammas')
-
 p.lisaa_asiakas(a)
 p.lisaa_asiakas(b)
 p.tulosta_asiakkaat()
 
 # ParempiPalvelu
 pp = palvelut.ParempiPalvelu('Kirjokansi')
-
 pp.lisaa_asiakas(c)
+print('')
 pp.tulosta_asiakkaat()
-
 pp.lisaa_etu('Jauhaa rahaa.')
 pp.lisaa_etu('Jauhaa viljaa.')
 pp.lisaa_etu('Jauhaa suolaa.')
+print('')
 pp.tulosta_edut()
 
 # Poikkeustapauksien käsittely
