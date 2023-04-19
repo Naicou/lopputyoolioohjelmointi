@@ -3,90 +3,85 @@ import random
 
 class Asiakas:
     def __init__(self, nimi, ika):
-        self.nimi = nimi
-        self.ika = ika
-        self.asiakasnumero = self.luo_nro()
+        self._nimi = None
+        self._ika = None
+        self._asiakasnumero = None
+        self.set_nimi(nimi)
+        self.set_ika(ika)
+        self.set_asiakasnumero(self.luo_nro())
 
     def get_nimi(self):
-        return self.nimi
+        return self._nimi
 
     def set_nimi(self, nimi):
         if not nimi:
             raise ValueError("Nimi ei voi olla tyhjä")
-        self.nimi = nimi
+        self._nimi = nimi
 
     def get_ika(self):
-        return self.ika
+        return self._ika
 
     def set_ika(self, ika):
         if not ika:
             raise ValueError("Ikä ei voi olla tyhjä")
-        self.ika = ika
+        self._ika = ika
 
     def get_asiakasnumero(self):
-        return f"{self.asiakasnumero[0]:02}-{self.asiakasnumero[1]:03}-{self.asiakasnumero[2]:03}"
+        return self._asiakasnumero
 
-    def lisaa_asiakas(self, asiakas):
-        if not asiakas:
-            raise ValueError("Asiakas ei voi olla tyhjä")
-        self.asiakkaat.append(asiakas)
-
-    def poista_asiakas(self, asiakas):
-        try:
-            self.asiakkaat.remove(asiakas)
-        except ValueError:
-            pass
-
-    def tulosta_asiakkaat(self):
-        for asiakas in self.asiakkaat:
-            print(self.luo_asiakasrivi(asiakas))
+    def set_asiakasnumero(self, asiakasnumero):
+        if not asiakasnumero:
+            raise ValueError("Asiakasnumero ei voi olla tyhjä")
+        self._asiakasnumero = asiakasnumero
 
     def luo_nro(self):
-        return [random.randint(0, 9) for _ in range(3)]
+        numerot = [random.randint(0, 9) for _ in range(3)]
+        asiakasnumero = f"{numerot[0]}{numerot[1]}-{numerot[2]}{numerot[0]}{numerot[1]}-{numerot[2]}{numerot[0]}{numerot[1]}"
+        return asiakasnumero
 
-    def luo_asiakasrivi(self, asiakas):
-        return f"{asiakas.get_nimi()} ({asiakas.get_asiakasnumero()}) on {asiakas.get_ika()}-vuotias."
+    def luo_asiakasrivi(self):
+        return f"{self._nimi} ({self._asiakasnumero}) on {self._ika}-vuotias"
 
 
 class Palvelu:
     def __init__(self, tuotenimi):
-        self.tuotenimi = tuotenimi
-        self.asiakkaat = []
+        self._tuotenimi = tuotenimi
+        self._asiakkaat = []
 
     def lisaa_asiakas(self, asiakas):
         if not asiakas:
             raise ValueError("Asiakas ei voi olla tyhjä")
-        self.asiakkaat.append(asiakas)
+        self._asiakkaat.append(asiakas)
 
     def poista_asiakas(self, asiakas):
         try:
-            self.asiakkaat.remove(asiakas)
+            self._asiakkaat.remove(asiakas)
         except ValueError:
             pass
 
     def tulosta_asiakkaat(self):
-        print(f"Tuotteen {self.tuotenimi} asiakkaat ovat:")
-        for asiakas in self.asiakkaat:
-            print(asiakas.luo_asiakasrivi(asiakas))
+        print(f"Tuotteen {self._tuotenimi} asiakkaat ovat:")
+        for asiakas in self._asiakkaat:
+            print(asiakas.luo_asiakasrivi())
 
 
 class ParempiPalvelu(Palvelu):
     def __init__(self, tuotenimi):
         super().__init__(tuotenimi)
-        self.edut = []
+        self._edut = []
 
     def lisaa_etu(self, etu):
         if not etu:
             raise ValueError("Etu ei voi olla tyhjä")
-        self.edut.append(etu)
+        self._edut.append(etu)
 
     def poista_etu(self, etu):
         try:
-            self.edut.remove(etu)
+            self._edut.remove(etu)
         except ValueError:
             pass
 
     def tulosta_edut(self):
-        print(f"Tuotteen {self.tuotenimi} edut ovat:")
-        for etu in self.edut:
-         print(etu)
+        print(f"Tuotteen {self._tuotenimi} edut ovat:")
+        for etu in self._edut:
+            print(etu)
